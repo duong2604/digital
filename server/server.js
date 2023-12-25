@@ -17,7 +17,9 @@ const app = express(corsOptions);
 const port = process.env.PORT || 8080;
 
 app.use(cors());
-app.use(morgan("combined"));
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 app.use(helmet());
 
 app.use(compression());

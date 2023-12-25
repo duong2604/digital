@@ -26,11 +26,15 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
   refreshToken: [String],
+  resetPasswordToken: {
+    type: String,
+  },
 });
 
 userSchema.methods.toJSON = function () {
   let obj = this.toObject();
   delete obj.password;
+  delete obj.refreshToken;
   return obj;
 };
 
