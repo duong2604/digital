@@ -62,7 +62,7 @@ export const resetPassword = asyncHandler(async (req, res) => {
   if (error) {
     throw new createHttpError.BadRequest(error.details[0].message);
   }
-
+  console.log(token);
   const newPassword = await hashPassword(req.body.password);
   foundUser.password = newPassword;
   foundUser.resetPasswordToken = undefined;

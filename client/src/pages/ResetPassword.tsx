@@ -1,17 +1,22 @@
 import { useState } from "react";
 import { useResetPasswordMutation } from "../features/user/userApiSlice";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const { token } = useParams();
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await resetPassword({ password });
+      if (password !== confirmPassword) {
+        return toast.error("Password & confirm password is not matched.");
+      }
+      await resetPassword({ password, token });
       toast.success("Reset success.");
       setPassword("");
       setConfirmPassword("");

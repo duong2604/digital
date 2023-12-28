@@ -11,10 +11,10 @@ const userApiSlice = apiSlice.injectEndpoints({
     }),
 
     resetPassword: builder.mutation({
-      query: (credentials) => ({
-        url: "/users/reset-password",
-        method: "PATCH",
-        body: credentials,
+      query: ({ password, token }) => ({
+        url: `/users/reset-password/${token}`,
+        method: "POST",
+        body: { password },
       }),
     }),
   }),

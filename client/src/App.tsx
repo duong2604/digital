@@ -31,6 +31,10 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="flex min-h-screen flex-col">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 export default App;
