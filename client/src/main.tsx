@@ -11,18 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable={false}
-        pauseOnHover={false}
-        theme="light"
-      />
+      <ToastContainer position="top-right" autoClose={2000} theme="light" />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -85,7 +85,7 @@ export const login = asyncHandler(async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  return res.json({ user: foundUser, newAccessToken });
+  return res.json({ user: foundUser, accessToken: newAccessToken });
 });
 
 // @Logout

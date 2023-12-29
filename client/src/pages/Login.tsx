@@ -1,24 +1,36 @@
 import { useState } from "react";
 import { useLoginMutation } from "../features/auth/authApiSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../features/auth/authSlice";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      await login({ email: email, password: password });
-      toast.success("Success");
+      const userData = await login({
+        email: email,
+        password: password,
+      }).unwrap();
+
+      dispatch(setCredentials(userData));
+      toast.success("Logged in success.");
+
+      navigate("/");
       setEmail("");
       setPassword("");
     } catch (error) {
-      toast.error("Something went wrong, try again.");
-      console.log(error);
+      const errMsg = error?.data.message || "Login failed!";
+      toast.error(errMsg);
     }
   };
 
@@ -52,7 +64,7 @@ export default function Login() {
                   type="email"
                   autoComplete="off"
                   required
-                  className="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -83,7 +95,7 @@ export default function Login() {
                   type="password"
                   autoComplete="off"
                   required
-                  className="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
