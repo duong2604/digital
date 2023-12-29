@@ -5,6 +5,13 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../features/auth/authSlice";
 
+interface customError {
+  data?: {
+    message?: string;
+    status?: number;
+  };
+}
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +36,7 @@ export default function Login() {
       setEmail("");
       setPassword("");
     } catch (error) {
-      const errMsg = error?.data.message || "Login failed!";
+      const errMsg = (error as customError)?.data?.message || "Login failed!";
       toast.error(errMsg);
     }
   };
@@ -40,7 +47,7 @@ export default function Login() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="https://demo-uminex.myshopify.com/cdn/shop/files/Logo_fb7c7c58-1b8f-455e-8b97-56d607743b37_145x@2x.png?v=1679893103"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -119,7 +126,7 @@ export default function Login() {
               to={"/register"}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Sign up now!
+              Sign up.
             </Link>
           </p>
         </div>

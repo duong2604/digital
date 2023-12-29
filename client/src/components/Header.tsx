@@ -1,8 +1,4 @@
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { RxDividerVertical } from "react-icons/rx";
-import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
-import { MdOutlineCrisisAlert } from "react-icons/md";
-import { IoMenu } from "react-icons/io5";
+import { IconsHeader } from "../utils/icons";
 
 const Header = () => {
   return (
@@ -13,7 +9,7 @@ const Header = () => {
           <span>Store Locator</span>
           <span>Order Tracking</span>
           <span>FAQs</span>
-          <RxDividerVertical />
+          <IconsHeader.dividerVertical />
           <div className="flex items-center justify-center gap-1">
             <img
               className="h-3 w-4"
@@ -22,13 +18,13 @@ const Header = () => {
             />
             <span> English</span>
             <button>
-              <RiArrowDropDownLine size={"1.5rem"} />
+              <IconsHeader.arrowDown size={"1.5rem"} />
             </button>
           </div>
           <div className="flex items-center justify-center">
             <span> United States(USD $)</span>{" "}
             <button>
-              <RiArrowDropDownLine size={"1.5rem"} />
+              <IconsHeader.arrowDown size={"1.5rem"} />
             </button>
           </div>
         </div>
@@ -46,9 +42,9 @@ const Header = () => {
             <div className="flex w-[210px] items-center justify-between">
               <span className="ml-2 mr-8">All Categories</span>
               <button className="text-2xl">
-                <RiArrowDropDownLine />
+                <IconsHeader.arrowDown />
               </button>
-              <RxDividerVertical size={`1.5rem`} />
+              <IconsHeader.dividerVertical size={`1.5rem`} />
             </div>
             <input
               type="text"
@@ -64,7 +60,7 @@ const Header = () => {
         <div className="flex items-center justify-center gap-3">
           <div className="flex items-center justify-center">
             <button>
-              <CiUser size={`2.5rem`} />
+              <IconsHeader.user size={`2.5rem`} />
             </button>
             <div>
               <span className="font-light">Login </span>
@@ -72,14 +68,14 @@ const Header = () => {
             </div>
           </div>
           <button className="relative">
-            <CiHeart size={`2.5rem`} />
+            <IconsHeader.heart size={`2.5rem`} />
             <span className="absolute right-0 top-0 inline-flex h-[18px] w-[18px] items-center  justify-center rounded-full bg-[#dd3842] leading-3 text-white">
               0
             </span>
           </button>
           <button>
             <div className="relative">
-              <CiShoppingCart size={`2.5rem`} />
+              <IconsHeader.cart size={`2.5rem`} />
               <span className="absolute right-0 top-0 inline-flex h-[18px] w-[18px] items-center  justify-center rounded-full bg-[#dd3842] leading-3 text-white">
                 0
               </span>
@@ -89,7 +85,7 @@ const Header = () => {
       </div>
       <div className="border-b-1 flex h-[48px] items-center justify-between border px-[6rem] font-semibold">
         <button className="flex items-center justify-center gap-2">
-          <IoMenu size={`1.8rem`} />
+          <IconsHeader.menu size={`1.8rem`} />
           <span> Browse All Categories</span>
         </button>
         <div className="flex gap-8 ">
@@ -104,7 +100,7 @@ const Header = () => {
           </a>
         </div>
         <div className="flex items-center justify-center gap-4 ">
-          <MdOutlineCrisisAlert size={`1.8rem`} />
+          <IconsHeader.discount size={`1.8rem`} />
           <span>Sale $20 Off Your First Order.</span>
         </div>
       </div>

@@ -6,11 +6,18 @@ import {
   Register,
   ResetPassword,
 } from "./pages";
+import Layout from "./pages/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+    ],
   },
   {
     path: "login",
