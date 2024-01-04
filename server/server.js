@@ -8,6 +8,7 @@ import compression from "compression";
 import helmet from "helmet";
 import router from "./routes/index.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
+import { v2 as cloudinary } from "cloudinary";
 
 // connect to database
 import "./db/mongoose.js";
@@ -15,6 +16,12 @@ import { corsOptions } from "./config/corsOptions.js";
 
 const app = express(corsOptions);
 const port = process.env.PORT || 8080;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 app.use(cors());
 if (process.env.NODE_ENV !== "production") {
@@ -28,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // routes
-app.use("/api/v1", router);
+app.use("/v1/api", router);
 
 app.use(notFound);
 app.use(errorHandler);

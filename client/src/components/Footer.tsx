@@ -33,8 +33,11 @@ const Footer = () => {
   return (
     <div className="flex flex-col bg-[#f1f5f6]  text-[14px]">
       <div className="border-b-1 flex items-center justify-center gap-[7rem] border py-[35px]">
-        {items.map((item) => (
-          <div className="flex flex-col items-center gap-[15px] px-[10px] text-center">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center gap-[15px] px-[10px] text-center"
+          >
             <button className="text-3xl text-[#2b38d1]">{item.icon}</button>
             <div>
               <p className="font-semibold">{item.title}</p>

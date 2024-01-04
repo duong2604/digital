@@ -84,17 +84,29 @@ const Header = () => {
         </div>
       </div>
       <div className="border-b-1 flex h-[48px] items-center justify-between border px-[6rem] font-semibold">
-        <button className="flex items-center justify-center gap-2">
+        <button className="flex h-full items-center justify-center gap-2  hover:border-t-4 hover:border-t-blue-500 hover:pb-1 hover:transition-all">
           <IconsHeader.menu size={`1.8rem`} />
           <span> Browse All Categories</span>
         </button>
         <div className="flex gap-8 ">
-          <a href="">Home</a>
-          <a href="">Shop</a>
-          <a href="">Products</a>
-          <a href="">Pages</a>
-          <a href="">Blog</a>
-          <a href="">Contact us</a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Home
+          </a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Shop
+          </a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Products
+          </a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Pages
+          </a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Blog
+          </a>
+          <a className="hover:text-red-500 hover:underline" href="">
+            Contact us
+          </a>
           <a className="text-[#dd3842]" href="">
             Buy Uminex!
           </a>

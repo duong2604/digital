@@ -1,4 +1,10 @@
+import { Banner } from "../components";
+
 const HomePage = () => {
-  return <div>content</div>;
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
 };
 export default HomePage;
