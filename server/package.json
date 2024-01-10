@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "data:import": "node populate.js",
+    "data:destroy": "node populate.js -d"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +33,7 @@
     "nodemailer": "^6.9.7"
   },
   "devDependencies": {
+    "@colors/colors": "^1.6.0",
     "nodemon": "^3.0.2"
   }
 }

@@ -1,9 +1,10 @@
-import { Banner } from "../components";
+import { Banner, ProductList } from "../components";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
+      <ProductList />
     </div>
   );
 };

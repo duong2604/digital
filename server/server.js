@@ -9,6 +9,7 @@ import helmet from "helmet";
 import router from "./routes/index.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 import { v2 as cloudinary } from "cloudinary";
+import colors from "@colors/colors";
 
 // connect to database
 import "./db/mongoose.js";
@@ -16,6 +17,7 @@ import { corsOptions } from "./config/corsOptions.js";
 
 const app = express(corsOptions);
 const port = process.env.PORT || 8080;
+colors.enable();
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,

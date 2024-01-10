@@ -3,10 +3,9 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   theme: {
     extend: {},
   },
-  plugins: [import("@tailwindcss/forms"), import("flowbite/plugin")],
+  plugins: [import("@tailwindcss/forms")],
 };

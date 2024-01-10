@@ -18,6 +18,11 @@ const reviewSchema = mongoose.Schema(
 
 const productSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     name: {
       type: String,
       required: true,
@@ -26,7 +31,6 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    imagePublicId: String,
     brand: {
       type: String,
       required: true,
@@ -66,4 +70,6 @@ const productSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", productSchema);
+
+export default Product;
