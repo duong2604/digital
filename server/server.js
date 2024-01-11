@@ -25,7 +25,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }

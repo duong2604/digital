@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { User, userSchema } from "../types/user.types";
+import { User, userSchema } from "../types/data.types";
 import { useRegisterMutation } from "../features/auth/authApiSlice";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";

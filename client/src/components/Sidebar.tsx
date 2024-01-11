@@ -8,6 +8,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
+import Products from "./Products";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -91,7 +92,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Sidebar() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
@@ -371,7 +372,9 @@ export default function Example() {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3">{/* Your content */}</div>
+              <div className="lg:col-span-3">
+                <Products />
+              </div>
             </div>
           </section>
         </main>
