@@ -8,6 +8,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
+import { useGetProductsQuery } from "../features/product/productsApiSlice";
 import Products from "./Products";
 
 const sortOptions = [
@@ -17,15 +18,7 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-// const subCategories = [
-//   { name: "Accessories", href: "#" },
-//   { name: "Camera & photos", href: "#" },
-//   { name: "Laptop $ ipad", href: "#" },
-//   { name: "Smartphone & tablets", href: "#" },
-//   { name: "Tv & Audios", href: "#" },
-//   { name: "Home & kitchen", href: "#" },
-//   { name: "Washing & machine", href: "#" },
-// ];
+
 const filters = [
   {
     id: "category",
@@ -301,16 +294,6 @@ export default function Sidebar() {
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                {/* <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul> */}
 
                 {filters.map((section) => (
                   <Disclosure
@@ -372,7 +355,7 @@ export default function Sidebar() {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3">
+              <div className="flex items-center justify-center bg-[#F1F5F6] p-3 lg:col-span-3">
                 <Products />
               </div>
             </div>

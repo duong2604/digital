@@ -1,5 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
+  createBrowserRouter,
+  RouterProvider,
+  useNavigation,
+} from "react-router-dom";
+import {
+  DetailedProduct,
   ForgotPassword,
   HomePage,
   Login,
@@ -7,6 +12,7 @@ import {
   ResetPassword,
 } from "./pages";
 import Layout from "./pages/Layout";
+import { Cart } from "./components";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +22,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "products/:id",
+        element: <DetailedProduct />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

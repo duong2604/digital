@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IconsHeader } from "../utils/icons";
 
 const Header = () => {
@@ -30,13 +31,13 @@ const Header = () => {
         </div>
       </div>
       <div className="border-b-1 flex h-[85px] items-center justify-between border px-[6rem] ">
-        <a href="">
+        <Link to={""}>
           <img
             className=" w-[145px]"
             src="https://demo-uminex.myshopify.com/cdn/shop/files/Logo_fb7c7c58-1b8f-455e-8b97-56d607743b37_145x@2x.png?v=1679893103"
             alt=""
           />
-        </a>
+        </Link>
         <div className="flex  items-center justify-center font-semibold">
           <div className="flex h-[46px] items-center justify-center rounded-md border-2 text-center">
             <div className="flex w-[210px] items-center justify-between">
@@ -89,27 +90,27 @@ const Header = () => {
           <span> Browse All Categories</span>
         </button>
         <div className="flex gap-8 ">
-          <a className="hover:text-red-500 hover:underline" href="">
+          <Link className="hover:text-red-500 " to={""}>
             Home
-          </a>
-          <a className="hover:text-red-500 hover:underline" href="">
+          </Link>
+          <Link className="hover:text-red-500 hover:underline" to={""}>
             Shop
-          </a>
-          <a className="hover:text-red-500 hover:underline" href="">
+          </Link>
+          <Link className="hover:text-red-500 hover:underline" to={""}>
             Products
-          </a>
-          <a className="hover:text-red-500 hover:underline" href="">
+          </Link>
+          <Link className="hover:text-red-500 hover:underline" to={""}>
             Pages
-          </a>
-          <a className="hover:text-red-500 hover:underline" href="">
+          </Link>
+          <Link className="hover:text-red-500 hover:underline" to={""}>
             Blog
-          </a>
-          <a className="hover:text-red-500 hover:underline" href="">
+          </Link>
+          <Link className="hover:text-red-500 hover:underline" to={""}>
             Contact us
-          </a>
-          <a className="text-[#dd3842]" href="">
+          </Link>
+          <Link className="text-[#dd3842]" to={""}>
             Buy Uminex!
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-center gap-4 ">
           <IconsHeader.discount size={`1.8rem`} />

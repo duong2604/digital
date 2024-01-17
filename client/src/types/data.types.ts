@@ -9,11 +9,12 @@ export const userSchema = z.object({
 export type User = z.infer<typeof userSchema>;
 
 export const productSchema = z.object({
+  _id: z.string().optional(),
   name: z.string(),
   image: z.string(),
-  brand: z.string(),
-  category: z.string(),
-  description: z.string(),
+  brand: z.string().optional(),
+  category: z.string().optional(),
+  description: z.string().optional(),
   price: z.number(),
   countInStock: z.string(),
   numReviews: z.number(),
