@@ -10,11 +10,11 @@ import { addToCart } from "../features/product/cartSlice";
 
 const CardProduct = ({ product }: { product: Product }) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product }));
-    // navigate("/cart");
+    navigate("/cart");
   };
 
   return (

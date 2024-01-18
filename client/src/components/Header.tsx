@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
 import { IconsHeader } from "../utils/icons";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
+import { CartItem } from "../types/data.types";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [count, setCount] = useState(0);
+
+  const { cartItems } = useSelector((state: RootState) => state.cart);
+
+  const quantity = cartItems.reduce(
+    (acc: number, item: CartItem) => acc + item.quantity,
+    0,
+  );
+  useEffect(() => {
+    setCount(quantity);
+  }, [cartItems]);
+
   return (
     <div className="min-w-screen text-[14px]">
       <div className="border-b-1 flex h-10 items-center justify-between border  px-[6rem] py-4   ">
@@ -74,14 +90,14 @@ const Header = () => {
               0
             </span>
           </button>
-          <button>
+          <Link to={`/cart`}>
             <div className="relative">
               <IconsHeader.cart size={`2.5rem`} />
               <span className="absolute right-0 top-0 inline-flex h-[18px] w-[18px] items-center  justify-center rounded-full bg-[#dd3842] leading-3 text-white">
-                0
+                {count}
               </span>
             </div>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="border-b-1 flex h-[48px] items-center justify-between border px-[6rem] font-semibold">

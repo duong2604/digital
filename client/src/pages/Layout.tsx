@@ -5,8 +5,10 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
-      <Footer />
+      <div className="h-full w-full">
+        <Outlet />
+      </div>
+      {/* <Footer /> */}
     </>
   );
 };

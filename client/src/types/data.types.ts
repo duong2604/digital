@@ -21,3 +21,13 @@ export const productSchema = z.object({
 });
 
 export type Product = z.infer<typeof productSchema>;
+
+export const cartItemSchema = z.object({
+  _id: z.string().optional(),
+  name: z.string(),
+  price: z.number(),
+  quantity: z.number(),
+  image: z.string(),
+});
+
+export type CartItem = z.infer<typeof cartItemSchema>;

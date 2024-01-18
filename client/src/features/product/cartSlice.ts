@@ -40,19 +40,63 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state));
     },
     updateQuantity: (state, action) => {
+      const { product, quantity } = action.payload;
+
       const existItem = state.cartItems.find(
-        (item: any) => item._id === action.payload.product._id,
+        (item: Product) => item._id === product._id,
+      );
+
+      if (existItem) {
+        existItem.quantity += quantity;
+      }
+
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item: any) => item._id !== action.payload.id,
+      );
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+
+    removeAllFromCart: (state) => {
+      state.cartItems = [];
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+
+    incrementQty: (state, action) => {
+      const existItem = state.cartItems.find(
+        (item: any) => item._id === action.payload._id,
       );
       if (existItem) {
-        existItem.quantity += action.payload.quantity;
-      } else {
-        action.payload.product.quantity = 1;
-        state.cartItems = [...state.cartItems, action.payload.product];
+        if (existItem.quantity < existItem.countInStock) {
+          existItem.quantity += 1;
+        } else {
+          existItem.quantity = existItem.countInStock;
+        }
+        localStorage.setItem("cart", JSON.stringify(state));
+      }
+    },
+    decrementQty: (state, action) => {
+      const existItem = state.cartItems.find(
+        (item: any) => item._id === action.payload._id,
+      );
+      if (existItem) {
+        existItem.quantity -= 1;
+        localStorage.setItem("cart", JSON.stringify(state));
       }
     },
   },
 });
 
-export const { addToCart, updateQuantity } = cartSlice.actions;
+export const {
+  addToCart,
+  updateQuantity,
+  removeFromCart,
+  removeAllFromCart,
+  incrementQty,
+  decrementQty,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

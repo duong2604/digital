@@ -1,21 +1,24 @@
-import { Link, useParams } from "react-router-dom";
-import { useGetProductDetailQuery } from "../features/product/productsApiSlice";
-import Grid from "@mui/material/Unstable_Grid2";
-import { Button, ButtonGroup, Divider, Rating, Stack } from "@mui/material";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Button, ButtonGroup, Divider, Rating, Stack } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
-import { addToCart, updateQuantity } from "../features/product/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import CircularIndeterminate from "../components/Loading";
+import { addToCart, updateQuantity } from "../features/product/cartSlice";
+import { useGetProductDetailQuery } from "../features/product/productsApiSlice";
+import { RootState } from "../app/store";
 
 const DetailedProduct = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
+  const { cartItems } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     data: product,
@@ -55,9 +58,16 @@ const DetailedProduct = () => {
     }
   };
 
-  const handleAddToCart = () => {
-    if (product) {
+  const hanldeClickCartBtn = () => {
+    const foundedItem = cartItems.find(
+      (item: any) => item._id === product?._id,
+    );
+    if (!foundedItem) {
+      dispatch(addToCart({ ...product }));
+      navigate("/cart");
+    } else {
       dispatch(updateQuantity({ product, quantity }));
+      navigate("/cart");
     }
   };
 
@@ -97,12 +107,12 @@ const DetailedProduct = () => {
           <Stack direction={"row"} spacing={1}>
             <ButtonGroup variant="outlined" aria-label="outlined button group">
               <Button onClick={handleDecrement}>-</Button>
-              <Button onClick={handleAddToCart}>{quantity}</Button>
+              <Button>{quantity}</Button>
               <Button onClick={handleIncrement}>+</Button>
             </ButtonGroup>
             <button
               className="w-1/2 rounded-[30px] border bg-[#2B38D1] text-white hover:bg-red-500"
-              onClick={handleAddToCart}
+              onClick={hanldeClickCartBtn}
             >
               <AddShoppingCartIcon />
             </button>
