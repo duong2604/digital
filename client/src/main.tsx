@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import App from "./App.tsx";
 import { store } from "./app/store.ts";
 import "./index.css";
+import "swiper/css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

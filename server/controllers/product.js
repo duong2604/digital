@@ -6,7 +6,19 @@ import { formatImage } from "../middleware/multerMiddleware.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const getAllProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const { brand, price } = req.query;
+  // filter
+  const queryObject = {};
+
+  if (brand) {
+    queryObject.brand = { $in: brand.split(",") };
+  }
+
+  if (price) {
+    queryObject.price = { $gte: price };
+  }
+
+  const products = await Product.find(queryObject);
   return res.json({ products });
 });
 

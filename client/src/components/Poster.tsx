@@ -8,12 +8,14 @@ interface Poster {
 
 const Poster = ({ img, title, name, desc, text }: Poster) => {
   return (
-    <div className="relative h-1/2 cursor-pointer">
-      <img
-        className="h-[185px] w-full  rounded-lg object-cover"
-        src={img}
-        alt=""
-      />
+    <div className="relative h-1/2 w-full cursor-pointer">
+      <div className="overflow-hidden">
+        <img
+          className="w-full rounded-lg object-cover transition-all hover:scale-105 sm:h-[185px]"
+          src={img}
+          alt=""
+        />
+      </div>
       <div className="absolute left-10 top-10 text-left text-[22px] font-medium uppercase text-white">
         <div>
           <h3 className="text-[18px]">{title}</h3>

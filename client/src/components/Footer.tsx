@@ -31,12 +31,12 @@ const items = [
 
 const Footer = () => {
   return (
-    <div className="flex flex-col bg-[#f1f5f6]  text-[14px]">
-      <div className="border-b-1 flex items-center justify-center gap-[7rem] border py-[35px]">
+    <div className="flex flex-col bg-[#f1f5f6] pt-5 text-[14px]">
+      <div className="border-b-1 grid grid-cols-2 items-center sm:grid-cols-5">
         {items.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center gap-[15px] px-[10px] text-center"
+            className="mt-2 flex flex-col items-center gap-[15px] px-[10px] text-center"
           >
             <button className="text-3xl text-[#2b38d1]">{item.icon}</button>
             <div>
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between gap-[2rem] px-[3rem] py-[60px] text-justify text-[#515d66]">
+      <div className="hidden items-center justify-between gap-[2rem] px-[3rem] py-[60px] text-justify text-[#515d66] sm:flex">
         <div className="flex flex-col gap-[22px]">
           <h4 className="mb-[30px] font-semibold">ABOUT THE STORE</h4>
           <div className="">
@@ -114,17 +114,17 @@ const Footer = () => {
           <p>Subscribe for Uminex and get 20% off your first purchase.</p>
         </div>
       </div>
-      <div className="flex items-center justify-between px-[3rem] py-[40px] font-[500] leading-[18px] text-[#515d66]">
-        <h3>
+      <div className="mb-5 mt-6 grid grid-cols-1 items-center px-[3rem] sm:grid-cols-2 sm:px-[6rem]">
+        <h3 className="mb-3 text-center">
           Copyright ©{" "}
           <span className="font-semibold text-[#2b38d1]">Uminex</span> all
           rights reserved. Powered by{" "}
           <span className="font-semibold text-[#2b38d1]">Danny Duong.</span>
         </h3>
-        <div className="flex items-center gap-3">
-          <span>Payment Method:</span>
+        <div className="flex flex-col items-center gap-3 sm:flex-row">
+          <span className="text-[12px] sm:text-[14px]">Payment Method:</span>
           <div>
-            <img className="h-[35px]" src={payment} alt="payment" />
+            <img className="sm:h-[35px]" src={payment} alt="payment" />
           </div>
         </div>
       </div>

@@ -20,8 +20,16 @@ const CardProduct = ({ product }: { product: Product }) => {
   return (
     <Card className="text-center hover:shadow-lg hover:shadow-[#2B38D1]">
       <CardActionArea>
-        <Link to={`/products/${product._id?.toString()}`}>
-          <CardMedia width={"100%"} component="img" image={product.image} />
+        <Link
+          to={`/products/${product._id?.toString()}`}
+          className="overflow-hidden"
+        >
+          <CardMedia
+            width={"100%"}
+            component="img"
+            image={product.image}
+            className="transition-all hover:scale-110"
+          />
         </Link>
       </CardActionArea>
       <CardContent className="flex flex-col items-center">

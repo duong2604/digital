@@ -3,8 +3,10 @@ import { Product } from "../../types/data.types";
 
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], void>({
-      query: () => `/products`,
+    getProducts: builder.query<Product[], any>({
+      query: ({ brands, price }) => {
+        return `/products?brand=${brands}&price=${price}`;
+      },
       transformResponse: (response: { products: Product[] }) =>
         response?.products,
       keepUnusedDataFor: 5,

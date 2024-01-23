@@ -72,20 +72,20 @@ const products = [
 
 const Banner = () => {
   return (
-    <div className="w-100 mx-[6rem] flex flex-col pb-[60px] pt-[30px]">
-      <div className="flex items-center justify-center gap-1 text-center">
+    <div className="flex-col pt-[70px] md:mx-[6rem] md:flex md:pb-[60px] md:pt-[30px]">
+      <div className="flex flex-col items-center justify-center gap-1 px-4 text-center md:flex-row">
         <Slider />
-        <div className="flex h-[375px] w-1/3 flex-col gap-[5px]">
+        <div className="flex flex-col gap-[5px] sm:h-[375px] lg:w-1/3">
           {posters.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="w-full">
                 <Poster {...item} />
               </div>
             );
           })}
         </div>
       </div>
-      <div className="flex items-center justify-between px-[15px] pt-[60px]">
+      <div className="hidden items-center justify-between px-[15px] pt-[60px] sm:flex">
         {products.map((item, index) => {
           return (
             <div key={index} className="flex flex-col items-center">

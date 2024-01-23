@@ -11,7 +11,7 @@ import { setCredentials, loggedOut } from "../../features/auth/authSlice";
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/v1/api",
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
+    const token = (getState() as RootState).auth.userInfo.accessToken;
 
     if (token) {
       headers.set("authorization", `Bearer ${token}`);

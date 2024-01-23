@@ -2,8 +2,12 @@ import { useGetProductsQuery } from "../features/product/productsApiSlice";
 import CardProduct from "./CardProduct";
 import CircularIndeterminate from "./Loading";
 
-const Products = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+const Products = ({ brands, price }: { brands: string[]; price: number }) => {
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useGetProductsQuery({ brands, price });
 
   if (isLoading) {
     return <CircularIndeterminate />;

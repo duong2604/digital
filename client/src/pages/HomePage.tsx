@@ -1,10 +1,10 @@
-import { Banner, Sidebar } from "../components";
+import { Banner, Menu } from "../components";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
-      <Sidebar />
+      <Menu />
     </div>
   );
 };

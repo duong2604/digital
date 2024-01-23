@@ -2,13 +2,19 @@ import slider4 from "../assets/images/slide/slider-4.jpg";
 
 const Slider = () => {
   return (
-    <div className="relative h-[375px] w-2/3 cursor-pointer text-left">
-      <img className=" h-full w-full rounded-lg" src={slider4} alt="" />
-      <div className="absolute left-20 top-10 font-semibold text-white">
+    <div className="relative h-[375px] w-full cursor-pointer text-left lg:w-2/3">
+      <div className="h-full w-full overflow-hidden">
+        <img
+          className="h-full rounded-lg object-cover transition-all hover:scale-105 sm:w-full"
+          src={slider4}
+          alt=""
+        />
+      </div>
+      <div className="absolute left-10 top-20 font-semibold text-white sm:left-20 sm:top-10">
         <div className="flex flex-col">
           <span className="mb-3 text-[#ffe603]">Top Trending</span>
-          <h3 className="text-[40px]">Trending</h3>
-          <h3 className="mb-2 text-[40px]">
+          <h3 className="text-[30px] sm:text-[40px]">Trending</h3>
+          <h3 className="sm:text-[40px ] mb-2 text-[30px]">
             <span className="text-[#ffe603]">Your</span> New Style
           </h3>
           <p className="font-normal">Limited Time: Online Only!</p>
