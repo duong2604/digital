@@ -6,9 +6,16 @@ import { formatImage } from "../middleware/multerMiddleware.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const getAllProducts = asyncHandler(async (req, res) => {
-  const { brand, price } = req.query;
+  const { brand, price, sort, search } = req.query;
   // filter
   const queryObject = {};
+
+  if (search) {
+    queryObject.$or = [
+      { name: { $regex: search, $options: "i" } },
+      { category: { $regex: search, $options: "i" } },
+    ];
+  }
 
   if (brand) {
     queryObject.brand = { $in: brand.split(",") };
@@ -18,8 +25,30 @@ export const getAllProducts = asyncHandler(async (req, res) => {
     queryObject.price = { $gte: price };
   }
 
-  const products = await Product.find(queryObject);
-  return res.json({ products });
+  // sort
+  const sortOptions = {
+    newest: "-createdAt",
+    oldest: "createdAt",
+    priceDsc: "-price",
+    priceAsc: "price",
+  };
+
+  const sortKey = sortOptions[sort] || sortOptions.newest;
+
+  // set up pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+
+  const totalOfProducts = await Product.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalOfProducts / limit);
+
+  const products = await Product.find(queryObject)
+    .sort(sortKey)
+    .limit(limit)
+    .skip(skip);
+
+  return res.json({ products, totalOfProducts, numOfPages, currentPage: page });
 });
 
 export const getProductById = asyncHandler(async (req, res) => {

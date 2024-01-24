@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { IconsHeader } from "../utils/icons";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { CartItem } from "../types/data.types";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import { debounce } from "lodash";
 
 const Header = () => {
   const [count, setCount] = useState(0);
+  const [search, setSearch] = useSearchParams("");
 
   const { cartItems } = useSelector((state: RootState) => state.cart);
 
@@ -14,6 +17,21 @@ const Header = () => {
     (acc: number, item: CartItem) => acc + item.quantity,
     0,
   );
+
+  const onSearchChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      search.set("query", e.target.value);
+      setSearch(search, {
+        replace: true,
+      });
+    } else {
+      search.delete("query");
+      setSearch(search, {
+        replace: true,
+      });
+    }
+  }, 1500);
+
   useEffect(() => {
     setCount(quantity);
   }, [cartItems]);
@@ -49,13 +67,26 @@ const Header = () => {
         </div>
       </div>
       <div className="lg:border-b-1 m-0 flex h-[85px] flex-col items-center p-0 sm:flex-row sm:justify-between sm:px-[6rem]">
-        <Link to={"/"} className="flex w-full items-center justify-center">
-          <img
-            className="w-1/2 py-4 sm:w-full sm:py-0 lg:w-[145px]"
-            src="https://demo-uminex.myshopify.com/cdn/shop/files/Logo_fb7c7c58-1b8f-455e-8b97-56d607743b37_145x@2x.png?v=1679893103"
-            alt=""
-          />
-        </Link>
+        <div className="flex items-center justify-between">
+          <div className="sm:hidden">
+            <MenuIcon />
+          </div>
+          <Link to={"/"} className="flex w-full items-center justify-center">
+            <img
+              className="w-1/2 py-4 sm:w-full sm:py-0 lg:w-[145px]"
+              src="https://demo-uminex.myshopify.com/cdn/shop/files/Logo_fb7c7c58-1b8f-455e-8b97-56d607743b37_145x@2x.png?v=1679893103"
+              alt=""
+            />
+          </Link>
+          <Link to={`/cart`} className="sm:hidden">
+            <div className="relative">
+              <IconsHeader.cart size={`2.5rem`} />
+              <span className="absolute right-0 top-0 inline-flex h-[18px] w-[18px] items-center  justify-center rounded-full bg-[#dd3842] leading-3 text-white">
+                {count}
+              </span>
+            </div>
+          </Link>
+        </div>
         <div className="m-0 flex items-center justify-center p-0 font-semibold">
           <div className="flex h-[46px] items-center justify-center rounded-md border-2 text-center">
             <div className="hidden w-[210px] items-center justify-between sm:flex">
@@ -70,6 +101,7 @@ const Header = () => {
                 type="text"
                 placeholder="Search for products..."
                 className="px-[50px] font-normal outline-none sm:w-[430px] sm:px-0"
+                onChange={onSearchChange}
               />
             </div>
           </div>

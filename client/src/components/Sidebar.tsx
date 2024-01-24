@@ -1,5 +1,4 @@
 import { Checkbox, FormControlLabel, FormGroup, Stack } from "@mui/material";
-import { useEffect, useRef } from "react";
 
 const brandsList = ["Apple", "Samsung", "Xiaomi", "Oppo"];
 const priceTags = [100, 200, 300, 500, 1000];
@@ -71,7 +70,7 @@ const Sidebar = ({
               onChange={() => setPrice(0)}
             />
             <label
-              className="hover:cursor-pointer"
+              className="font-medium hover:cursor-pointer"
               htmlFor="all"
             >{`All Price`}</label>
           </div>
@@ -86,7 +85,7 @@ const Sidebar = ({
                   onChange={(e) => onPriceChange(e, price)}
                 />
                 <label
-                  className="hover:cursor-pointer"
+                  className="font-medium hover:cursor-pointer"
                   htmlFor={`${index}`}
                 >{`Over ${price}$`}</label>
               </div>
