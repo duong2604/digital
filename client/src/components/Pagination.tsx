@@ -3,8 +3,10 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 export default function PaginationControlled({
+  numOfPages,
   setCurrentPage,
 }: {
+  numOfPages: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [page, setPage] = React.useState(1);
@@ -16,7 +18,12 @@ export default function PaginationControlled({
 
   return (
     <Stack spacing={2}>
-      <Pagination count={10} page={page} onChange={handleChange} size="large" />
+      <Pagination
+        count={numOfPages}
+        page={page}
+        onChange={handleChange}
+        size="large"
+      />
     </Stack>
   );
 }

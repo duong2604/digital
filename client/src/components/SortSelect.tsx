@@ -25,6 +25,7 @@ export default function SortSelect({
         onChange={handleChange}
         defaultValue="newest"
       >
+        <MenuItem value={"none"}>None</MenuItem>
         <MenuItem value={"newest"}>Newest</MenuItem>
         <MenuItem value={"oldest"}>Oldest</MenuItem>
         <MenuItem value={"priceAsc"}>Price: Low to high</MenuItem>

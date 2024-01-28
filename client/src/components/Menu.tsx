@@ -10,7 +10,7 @@ const Menu = () => {
   const [price, setPrice] = useState<number>(0);
   const [sort, setSort] = useState("none");
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(8);
   const [numOfPages, setNumOfPages] = useState(0);
 
   return (
@@ -40,11 +40,13 @@ const Menu = () => {
             price={price}
             sort={sort}
             setNumOfPages={setNumOfPages}
+            currentPage={currentPage}
+            limit={limit}
           />
         </div>
       </Stack>
       <div className="my-5 flex justify-center">
-        <Pagination setCurrentPage={setCurrentPage} />
+        <Pagination setCurrentPage={setCurrentPage} numOfPages={numOfPages} />
       </div>
     </>
   );

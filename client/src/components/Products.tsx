@@ -9,11 +9,15 @@ const Products = ({
   brands,
   price,
   sort,
+  currentPage,
+  limit,
   setNumOfPages,
 }: {
   brands: string[];
   price: number;
   sort: string;
+  currentPage: number;
+  limit: number;
   setNumOfPages: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const [search, _] = useSearchParams("");
@@ -21,13 +25,15 @@ const Products = ({
   if (search.get("query")) {
     searchParams = search.get("query")!;
   }
-
   const { data, isLoading, error }: any = useGetProductsQuery({
     brands,
     price,
     sort,
+    page: currentPage,
+    limit,
     searchParams,
   });
+
   useEffect(() => {
     if (data && data.numOfPages) {
       setNumOfPages(data.numOfPages);

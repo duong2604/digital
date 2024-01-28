@@ -4,8 +4,8 @@ import { Product } from "../../types/data.types";
 const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], any>({
-      query: ({ brands, price, sort, searchParams }) => {
-        return `/products?search=${searchParams}&brand=${brands}&price=${price}&sort=${sort}`;
+      query: ({ brands, price, sort, searchParams, page, limit }) => {
+        return `/products?search=${searchParams}&brand=${brands}&price=${price}&sort=${sort}&page=${page}&limit=${limit}`;
       },
       keepUnusedDataFor: 5,
       providesTags: ["Product"],

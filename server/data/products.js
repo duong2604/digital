@@ -2,7 +2,7 @@ const products = [
   {
     name: "Sony X-Media Pro",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
     brand: "Sony",
@@ -15,7 +15,7 @@ const products = [
   {
     name: "iPhone 13 Pro",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Introducing the iPhone 13 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life",
     brand: "Apple",
@@ -28,7 +28,7 @@ const products = [
   {
     name: "Samsung Galaxy S22",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design",
     brand: "Samsung",
@@ -41,7 +41,7 @@ const products = [
   {
     name: "Sony Diamond Mobile 5",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music",
     brand: "Sony",
@@ -54,7 +54,7 @@ const products = [
   {
     name: "Xiaomi Redmi 20",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
     brand: "Xiaomi",
@@ -67,7 +67,7 @@ const products = [
   {
     name: "Oppo V9 Pro Max",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     brand: "Oppo",
@@ -80,7 +80,7 @@ const products = [
   {
     name: "Iphone 14 Pro Max",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     brand: "Apple",
@@ -93,7 +93,7 @@ const products = [
   {
     name: "Iphone 15 Pro Max",
     image:
-      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1704222056/xnijrf762r2addv5q5zx.jpg",
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
     description:
       "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     brand: "Apple",
@@ -102,6 +102,32 @@ const products = [
     countInStock: 10,
     rating: 3,
     numReviews: 6,
+  },
+  {
+    name: "Iphone 14 Pro Max",
+    image:
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
+    description:
+      "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
+    brand: "Apple",
+    category: "Mobile",
+    price: 200,
+    countInStock: 5,
+    rating: 3,
+    numReviews: 16,
+  },
+  {
+    name: "Xiaomi Redmi 10",
+    image:
+      "https://res.cloudinary.com/dl9ilwdzj/image/upload/v1706272158/dsgbrx7dp3hfmp9uwfv5.png",
+    description:
+      "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
+    brand: "Xiaomi",
+    category: "Mobile",
+    price: 199,
+    countInStock: 15,
+    rating: 3,
+    numReviews: 30,
   },
 ];
 
