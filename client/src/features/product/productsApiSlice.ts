@@ -5,13 +5,13 @@ const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], any>({
       query: ({ brands, price, sort, searchParams, page, limit }) => {
-        return `/products?search=${searchParams}&brand=${brands}&price=${price}&sort=${sort}&page=${page}&limit=${limit}`;
+        return `/api/products?search=${searchParams}&brand=${brands}&price=${price}&sort=${sort}&page=${page}&limit=${limit}`;
       },
       keepUnusedDataFor: 5,
       providesTags: ["Product"],
     }),
     getProductDetail: builder.query<Product, string>({
-      query: (productId) => `/products/${productId}`,
+      query: (productId) => `/api/products/${productId}`,
       transformResponse: (response: { product: Product }) => response.product,
       keepUnusedDataFor: 5,
     }),

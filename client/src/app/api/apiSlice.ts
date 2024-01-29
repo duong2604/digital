@@ -9,7 +9,7 @@ import type {
 import { setCredentials, loggedOut } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/v1/api",
+  baseUrl: "", // use proxy
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth?.userInfo?.accessToken;
 
@@ -27,7 +27,11 @@ const baseQueryWithReauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error && result.error.status === 401) {
-    const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
+    const refreshResult = await baseQuery(
+      "/api/auth/refresh",
+      api,
+      extraOptions,
+    );
 
     if (refreshResult.data) {
       api.dispatch(setCredentials({ ...refreshResult.data }));
