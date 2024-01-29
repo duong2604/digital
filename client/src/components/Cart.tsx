@@ -50,11 +50,11 @@ const Cart = () => {
   };
 
   return (
-    <Stack className="mb-8 mt-[6rem] px-5 sm:mt-[3rem] sm:hidden">
+    <Stack className="mb-8 mt-[6rem] px-5 sm:mt-[3rem]">
       <h2 className="mb-4 text-center text-3xl font-semibold">Your cart</h2>
-      <Stack className="mb-2 rounded-lg border-2 border-[#2B38D1]">
+      <Stack className="mb-2 rounded-lg border-2 border-[#2B38D1] sm:hidden sm:border-0">
         {cartItems.length === 0 && (
-          <div className="flex h-[200px] items-center justify-center text-center text-2xl font-medium capitalize">
+          <div className="flex h-[200px] items-center justify-center text-center text-2xl font-medium capitalize sm:hidden">
             Your cart is empty
           </div>
         )}
@@ -63,16 +63,16 @@ const Cart = () => {
             <Stack
               key={index}
               direction={`row`}
-              className="flex-wrap items-center justify-between border-b-2 p-2"
+              className="flex-wrap items-center justify-between border-b-2 p-2 sm:hidden sm:border-0"
             >
               <Link to={`/products/${item._id}`}>
                 <img
-                  className="w-[100px] object-cover"
+                  className="w-[100px] object-cover sm:hidden"
                   src={item.image}
                   alt=""
                 />
               </Link>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 sm:hidden">
                 <p>{item.name}</p>
                 <p className="text-lg font-semibold text-red-500">{`$ ${item.price}`}</p>
                 <ButtonGroup aria-label="outlined primary button group">
@@ -86,7 +86,7 @@ const Cart = () => {
                   </span>
                 </p>
               </div>
-              <div>
+              <div className="">
                 <button
                   className="hover:text-red-500"
                   onClick={() => dispatch(removeFromCart({ id: item._id }))}
@@ -97,7 +97,7 @@ const Cart = () => {
             </Stack>
           );
         })}
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between p-4 sm:hidden">
           <Link to={`/`}>
             <button className="rounded-[30px] border bg-[#2B38D1] px-5 py-2 font-semibold text-white hover:bg-[#212529]">
               Continue Shopping

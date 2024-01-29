@@ -10,6 +10,9 @@ import router from "./routes/index.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 import { v2 as cloudinary } from "cloudinary";
 import colors from "@colors/colors";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 // connect to database
 import "./db/mongoose.js";
@@ -25,6 +28,9 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, "../client/dist")));
+
 app.use(cors(corsOptions));
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
@@ -38,6 +44,10 @@ app.use(cookieParser());
 
 // routes
 app.use("/v1/api", router);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);

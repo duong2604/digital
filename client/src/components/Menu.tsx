@@ -46,7 +46,11 @@ const Menu = () => {
         </div>
       </Stack>
       <div className="my-5 flex justify-center">
-        <Pagination setCurrentPage={setCurrentPage} numOfPages={numOfPages} />
+        {numOfPages < 2 ? (
+          ""
+        ) : (
+          <Pagination setCurrentPage={setCurrentPage} numOfPages={numOfPages} />
+        )}
       </div>
     </>
   );
