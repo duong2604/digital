@@ -7,6 +7,7 @@ import {
   Login,
   Register,
   ResetPassword,
+  ShippingAddress,
 } from "./pages";
 import Layout from "./pages/Layout";
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "delivery",
+        element: <ShippingAddress />,
       },
     ],
   },

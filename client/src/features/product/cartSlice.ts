@@ -3,7 +3,7 @@ import { Product } from "../../types/data.types";
 
 const initialState = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart") as any)
-  : { cartItems: [] };
+  : { cartItems: [], shippingAddress: {} };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -87,6 +87,11 @@ const cartSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify(state));
       }
     },
+
+    addShippingAddress: (state, action) => {
+      state.shippingAddress = action.payload;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
   },
 });
 
@@ -97,6 +102,7 @@ export const {
   removeAllFromCart,
   incrementQty,
   decrementQty,
+  addShippingAddress,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

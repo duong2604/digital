@@ -258,13 +258,15 @@ const Cart = () => {
                 value={confirm}
                 onChange={() => setConfirm(!confirm)}
               />
-              <button
-                type="button"
-                disabled={confirm}
-                className={` ${confirm ? "hover:cursor-pointer hover:bg-[#212529]" : "opacity-[0.7] hover:cursor-not-allowed"} w-full rounded-[30px] border bg-[#2B38D1] py-2 font-semibold text-white `}
-              >
-                Check out
-              </button>
+              <Link to={`/delivery`}>
+                <button
+                  type="button"
+                  disabled={!confirm}
+                  className={` ${confirm ? "hover:cursor-pointer hover:bg-[#212529]" : "opacity-[0.7] hover:cursor-not-allowed"} w-full rounded-[30px] border bg-[#2B38D1] py-2 font-semibold text-white `}
+                >
+                  Proceed
+                </button>
+              </Link>
             </div>
           </div>
         </Grid>
